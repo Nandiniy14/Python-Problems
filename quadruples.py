@@ -1,12 +1,15 @@
+from itertools import combinations
 size = int(input("Enter the size of array"))
-array=[]
+arr=[]
 print("Enter the numbers")
 for i in range(size):
-    array.append(int(input()))
+    arr.append(int(input()))
 sum = int(input("Enter the sum"))
-for i in range(0,size-3):
-    for j in range(i+1,size-2):
-	for k in range(j+1,size-1):
-	    for l in range(k+1,size):
-		if array[i] + array[j] + array[k] + array[l] == sum:
-		     print (( array[i], array[j], array[k], array[l]))
+lists = list(combinations(arr,4))
+for i in range(len(lists)):
+    quadruples = list(map(int,lists[i]))
+    count = 0
+    for element in quadruples:
+        count += element
+    if count == sum:
+        print(quadruples)
